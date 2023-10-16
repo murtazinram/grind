@@ -1,5 +1,7 @@
 package org.example.validParentheses;
 
+import java.util.Stack;
+
 /**
  * https://leetcode.com/problems/valid-parentheses/
  * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
@@ -26,11 +28,34 @@ package org.example.validParentheses;
  */
 public class ValidParentheses {
     public static boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
 
-        return false;
+        for (char x : s.toCharArray()) {
+            if(x=='('){
+                stack.push(')');
+            } else if (x=='{') {
+                stack.push('}');
+            } else if (x=='[') {
+                stack.push(']');
+            } else if (stack.isEmpty() || stack.pop()!=x) {
+                return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    public static boolean isValid1(String s) {
+        while (s.contains("()") || s.contains("{}") || s.contains("[]")) {
+            s = s.replace("{}", "");
+            s = s.replace("()", "");
+            s = s.replace("[]", "");
+        }
+        return s.isEmpty();
     }
 
     public static void main(String[] args) {
-
+        String s = "[(])";//[()]
+        boolean valid = isValid1(s);
+        System.out.println("valid=" + valid);
     }
 }

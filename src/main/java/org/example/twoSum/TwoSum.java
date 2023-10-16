@@ -51,14 +51,15 @@ public class TwoSum {
     }
 
     public static int[] twoSum2(int[] nums, int target) {
-        //Arrays.sort(nums);
+        Arrays.sort(nums);
         int left = 0;
         int right = nums.length - 1;
         while (left < right){
             int curSum = nums[left] + nums[right];
             if (curSum == target){
                 return new int[]{left, right};
-            } else if (curSum > target) {
+           //} else if(curSum  < target) {
+            } else if (left !=  right - 1) {
                 right--;
             } else {
                 left++;
