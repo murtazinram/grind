@@ -2,6 +2,7 @@ package org.example.largestRadialSum;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * https://www.codewars.com/kata/64edf7ab2b610b16c2067579/train/java
@@ -29,6 +30,7 @@ import java.util.List;
 public class LargestRadialSum {
 
     public static int largest(int[] arr, int d) {
+
         List<Integer> list = new ArrayList<>();
         int step = arr.length / d;
         int sum = 0;

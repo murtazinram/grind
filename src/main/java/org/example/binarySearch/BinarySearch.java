@@ -49,6 +49,5 @@ public class BinarySearch {
 
         int search = search(nums, target);
         System.out.println("search= " + search);
-
     }
 }

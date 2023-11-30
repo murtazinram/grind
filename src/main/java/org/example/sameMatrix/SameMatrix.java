@@ -1,9 +1,8 @@
 package org.example.sameMatrix;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.math.BigInteger;
+import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * https://www.codewars.com/kata/635fc0497dadea0030cb7936/train/java
@@ -49,9 +48,17 @@ import java.util.List;
  * All the values of the elements in the matrix are between 1 and 9, and the number of matrices will not exceed 1000.
  */
 public class SameMatrix {
+
+    private static final String TINKOFF = "tinkoff";
+
     public static int count_different_matrices1(int[][] matrices) {
         List<String> combinations = new ArrayList<>();
         int nummberOfMatrices = 0;
+
+        BigInteger aBig = new BigInteger("2");
+        BigInteger bBig = new BigInteger("2");
+        BigInteger sum = aBig.add(bBig);
+        long sum1 = Stream.of("a, b").map(Long::parseLong).mapToLong(c -> c).sum();
 
         for (int i = 0; i < matrices.length; i++) {
             String a = "" + matrices[i][0] + matrices[i][1] + matrices[i][2] + matrices[i][3];
@@ -104,5 +111,23 @@ public class SameMatrix {
                 {1, 2, 1, 2}};
         System.out.println(count_different_matrices1(ms));
 
+    }
+
+    public int count(String str) {
+        List<String> tinkoffChars = Arrays.asList(TINKOFF.split(""));
+        List<String> strChars = Arrays.asList(str.split(""));
+        int count = 0;
+        for (int i = 0; i < strChars.size(); i++) {
+            if (strChars.isEmpty()) {
+                count++;
+                tinkoffChars = Arrays.asList(TINKOFF.split(""));
+            }
+            for (int j = i; j < tinkoffChars.size(); j++) {
+                if (Objects.equals(strChars.get(i), tinkoffChars.get(j))) {
+                    tinkoffChars.remove(j);
+                }
+            }
+        }
+        return count;
     }
 }

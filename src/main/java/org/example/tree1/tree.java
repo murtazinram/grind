@@ -23,6 +23,9 @@ public class tree {
         System.out.println("sumWide tree =" + Tree.sumWide(root));
         System.out.println("invertTree tree =" + Tree.invertTree(root));
 
+        Thread thread = Thread.currentThread();
+        System.out.println("" + thread.getName());
+
     }
 
     static int maxSum(Tree tree) {
